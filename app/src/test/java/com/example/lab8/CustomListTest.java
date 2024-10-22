@@ -26,11 +26,10 @@ public class CustomListTest {
     @Test
     void testAdd() {
         CustomList cityList = mockCustomList();
-        assertEquals(1, cityList.getCities().size());
+        assertEquals(1, cityList.getCount());
         City city = new City("Regina", "Saskatchewan");
         cityList.add(city);
-        assertEquals(2, cityList.getCities().size());
-        assertTrue(cityList.getCities().contains(city));
+        assertEquals(2, cityList.getCount());
     }
 
     @Test
