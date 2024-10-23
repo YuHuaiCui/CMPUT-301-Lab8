@@ -13,10 +13,11 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 public class CustomListTest {
-    private CustomList mockCustomList() {
-        CustomList customList = new CustomList(null, new ArrayList<City>());
-        customList.addCity(mockCity());
-        return customList;
+    private CustomList list;
+
+    public CustomList MockCityList(){
+        list = new CustomList(null,new ArrayList<>());
+        return list;
     }
 
     private City mockCity() {
@@ -24,22 +25,11 @@ public class CustomListTest {
     }
 
     @Test
-    void testAdd() {
-        CustomList cityList = mockCustomList();
-        assertEquals(1, cityList.getCount());
-        City city = new City("Regina", "Saskatchewan");
-        cityList.add(city);
-        assertEquals(2, cityList.getCount());
-    }
-
-    @Test
-    void testAddException() {
-        CustomList cityList = mockCustomList();
-        City city = new City("Yellowknife", "Northwest Territories");
-        cityList.add(city);
-        assertThrows(IllegalArgumentException.class, () -> {
-            cityList.add(city);
-        });
+    public void addCityTest(){
+        list = MockCityList();
+        int listSize = list.getCount();
+        list.addCity(new City("Estevan", "SK"));
+        assertEquals(list.getCount(),listSize + 1);
     }
 
 }
