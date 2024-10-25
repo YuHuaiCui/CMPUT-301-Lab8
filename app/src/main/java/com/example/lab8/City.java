@@ -17,4 +17,21 @@ public class City {
     String getProvinceName(){
         return this.province;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (!(obj instanceof City)) {
+            return false;
+        }
+        City city = (City) obj;
+        return this.city.equals(city.city) && this.province.equals(city.province);
+    }
+
+    @Override
+    public int hashCode() {
+        return this.city.hashCode() + this.province.hashCode();
+    }
 }
